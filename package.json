@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "deploy": "claudia create --region us-east-1 --api-module api"
+    "create": "claudia create --region us-east-1 --api-module api",
+    "deploy": "claudia update"
   },
   "keywords": [],
   "author": "",
