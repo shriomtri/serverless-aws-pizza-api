@@ -1,10 +1,23 @@
 'use strict'
 
-function deleteOrder(id) {
-  if (!id)
-    throw new Error('Order ID is required for deleting the order')
+const AWS = require('aws-sdk')
+const docClient = new AWS.DynamoDB.DocumentClient({region: 'us-east-1'})
 
-  return {}
+function deleteOrder(orderId) {
+  return docClient.delete({
+    TableName: 'pizza-orders',
+    Key: {
+      orderId: orderId
+    }
+  }).promise()
+    .then((result) => {
+      console.log('Order is deleted!', result)
+      return result
+    })
+    .catch((deleteError) => {
+      console.log(`Oops, order is not deleted :(`, deleteError)
+      throw deleteError
+    })
 }
 
 module.exports = deleteOrder
