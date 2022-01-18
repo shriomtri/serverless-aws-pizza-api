@@ -8,7 +8,7 @@
     "deploy": "claudia update",
     "start:local": "claudia-local-api --api-module api.js",
     "get:log:group": "aws logs describe-log-groups --region us-east-1",
-    "get:log:output": "aws logs filter-log-events --log-group-name '/aws/lambda/pizza-api' --output json --filter-pattern='Order is saved'"
+    "get:log:output": "aws logs filter-log-events --log-group-name '/aws/lambda/pizza-api' --output text"
   },
   "keywords": [],
   "author": "",
